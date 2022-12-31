@@ -1,0 +1,13 @@
+git clone https://github.com/ptitSeb/box86
+sudo apt install build-essential cmake python3 gcc
+mkdir box86/build
+cd box86/build
+cmake .. -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+make -j3
+sudo make install
+mkdir wine
+wget https://www.playonlinux.com/wine/binaries/phoenicis/upstream-linux-x86/PlayOnLinux-wine-7.0-rc5-upstream-linux-x86.tar.gz
+tar -xvf  PlayOnLinux-wine-7.0-rc5-upstream-linux-x86.tar.gz -C ~/wine/
+rm PlayOnLinux-wine-7.0-rc5-upstream-linux-x86.tar.gz
+cd ~
+rm build
