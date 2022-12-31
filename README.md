@@ -10,7 +10,7 @@ configure:
 ```
 wget https://raw.githubusercontent.com/ArieSR91/wine/main/configure; chmod +x configure; bash configure
 ```
-## instan
+### instan
 build & configure:
 ```
 wget https://raw.githubusercontent.com/ArieSR91/wine/main/build; chmod +x build; bash build; wget https://raw.githubusercontent.com/ArieSR91/wine/main/configure; chmod +x configure; bash configure
