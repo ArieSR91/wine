@@ -1,0 +1,17 @@
+sudo echo "export BOX86_PATH=~/wine/bin/
+
+export BOX86_LD_LIBRARY_PATH=~/wine/lib/
+
+export BOX86_LOG=1" >> /etc/profile.d/wine.sh
+
+sudo echo "#!/bin/bash
+
+if [ '$#' == '0' ];then
+    box86 wine explorer
+else
+    box86 wine '$@'
+fi" >> /usr/local/bin/wine
+sudo ln -s ~/wine/bin/winecfg /usr/local/bin/winecfg
+sudo ln -s ~/wine/bin/wineboot /usr/local/bin/wineboot
+sudo ln -s ~/wine/bin/wineserver /usr/local/bin/wineserver
+sudo chmod +x /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
