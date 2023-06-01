@@ -4,7 +4,7 @@ install wine for linux-armhf with box86
 ## Wget install
 install manual:
 ```
-wget https://raw.githubusercontent.com/ArieSR91/wine/main/wine.sh; sudo mv wine.sh /usr/local/bin/wine; sudo chmod 775 /usr/local/bin/wine
+wget https://raw.githubusercontent.com/ArieSR91/wine/main/winebox; sudo mv winebox /usr/local/bin/; sudo chmod 775 /usr/local/bin/winebox
 ```
 ## Deb install
 deb install:
