@@ -2,7 +2,7 @@
 
 function build-box86() {
     cd ~
-    sudo apt install build-essential wget cmake python3 gcc -y
+    sudo apt install build-essential wget cmake python3 gcc libasound2 libc6 libglib2.0-0 libgphoto2-6 libgphoto2-port12 libgstreamer-plugins-base1.0-0 libgstreamer1.0-0 libldap-common libopenal1 libpcap0.8 libpulse0 libsane1 libudev1 libusb-1.0-0 libvkd3d1 libx11-6 libxext6 libasound2-plugins ocl-icd-libopencl1 libncurses6 libncurses5 libcap2-bin libcups2 libdbus-1-3 libfontconfig1 libfreetype6 libglu1-mesa libglu1 libgnutls30 libgssapi-krb5-2 libkrb5-3 libodbc1 libosmesa6 libsdl2-2.0-0 libv4l-0 libxcomposite1 libxcursor1 libxfixes3 libxi6 libxinerama1 libxrandr2 libxrender1 libxxf86vm1 libc6 libcap2-bin libunwind8 libjpeg62-turbo -y
     if [ -d box86 ]; then
         echo "box86 folder exist"
         sleep 1
@@ -49,6 +49,65 @@ function build-box86() {
                 cd box86/build
                 cmake .. -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
                 make -j3
+                sudo make install
+            fi
+            echo "done"
+        fi
+    fi
+    cd ~
+    return 0
+}
+
+function build-box64() {
+    cd ~
+    sudo apt install build-essential wget cmake python3 gcc libasound2 libc6 libglib2.0-0 libgphoto2-6 libgphoto2-port12 libgstreamer-plugins-base1.0-0 libgstreamer1.0-0 libldap-common libopenal1 libpcap0.8 libpulse0 libsane1 libudev1 libusb-1.0-0 libvkd3d1 libx11-6 libxext6 libasound2-plugins ocl-icd-libopencl1 libncurses6 libncurses5 libcap2-bin libcups2 libdbus-1-3 libfontconfig1 libfreetype6 libglu1-mesa libglu1 libgnutls30 libgssapi-krb5-2 libkrb5-3 libodbc1 libosmesa6 libsdl2-2.0-0 libv4l-0 libxcomposite1 libxcursor1 libxfixes3 libxi6 libxinerama1 libxrandr2 libxrender1 libxxf86vm1 libc6 libcap2-bin libunwind8 libjpeg62-turbo -y
+    if [ -d box64 ]; then
+        echo "box64 folder exist"
+        sleep 1
+        echo "Checking if box64 installed"
+        sleep 1
+        if [ ! -f /usr/local/bin/box64 ]; then
+            echo "box64 no installed"
+            sleep 1
+            echo "building box64"
+            sleep 1
+            mkdir box64/build
+            cd box64/build
+            cmake .. -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+            make -j$(nproc)
+            sudo make install
+        else
+            echo "box86 already"
+        fi
+        echo "done"
+    else
+        echo "box64 folder no exist"
+        sleep 1
+        if [ -f /usr/local/bin/box64 ]; then
+            echo "but box64 installed"
+            sleep 1
+        else
+            echo "checking for box64.txz"
+            if [ -f box64.txz ]; then
+                echo "Extracting exiting file"
+                sleep 1
+                tar xJvf box64.txz
+                echo "building box64"
+                sleep 1
+                cd box86/build
+                cmake .. -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+                make -j$(nproc)
+                sudo make install
+            else
+                echo "Downloading box64"
+                sleep 1
+                wget https://github.com/ArieSR91/wine/raw/main/box64.txz
+                tar xJvf box64.txz
+                echo "building box64"
+                sleep 1
+                cd box86/build
+                cmake .. -DARM_DYNAREC=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+                make -j$(nproc)
                 sudo make install
             fi
             echo "done"
@@ -111,6 +170,7 @@ function show_help() {
 Usage: winebox [command] [options]
 
 Command: box86          : Build and install box86
+         box64          : Build and install box64
          wine           : Install wine
          configure      : Configure wine
 
@@ -128,6 +188,9 @@ function show_version() {
 case $1 in
     box86)
         build-box86
+        ;;
+    box64)
+        build-box64
         ;;
     wine)
         build-wine

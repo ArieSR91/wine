@@ -18,6 +18,7 @@ sudo apt update && sudo apt install winebox
 ### winebox command:
 
 winebox box86 = build box86\
+winebox box64 = build box64\
 winebox wine = build wine\
 winebox configure = configure wine
 
