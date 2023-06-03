@@ -1,5 +1,5 @@
 # wine
-install wine for linux-armhf with box86
+install wine on linux armhf and arm64 device with winebox
 
 ## Wget install
 install manual:
@@ -10,7 +10,6 @@ sudo apt install python3 cmake gcc wget build-essential -y
 wget https://raw.githubusercontent.com/ArieSR91/wine/main/winebox; sudo mv winebox /usr/local/bin/; sudo chmod 775 /usr/local/bin/winebox
 ```
 ### winebox command:
-
 winebox box86 = build box86\
 winebox box64 = build box64\
 winebox wine = build wine\
