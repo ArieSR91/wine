@@ -6,15 +6,6 @@ install manual:
 ```
 wget https://raw.githubusercontent.com/ArieSR91/wine/main/winebox; sudo mv winebox /usr/local/bin/; sudo chmod 775 /usr/local/bin/winebox
 ```
-## Deb install
-deb install:
-```
-echo "deb [arch=all arch=armhf] https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null
-```
-after add my repository run:\
-sudo apt update && sudo apt install winebox
-
-
 ### winebox command:
 
 winebox box86 = build box86\
@@ -22,6 +13,19 @@ winebox box64 = build box64\
 winebox wine = build wine\
 winebox configure = configure wine
 
+## Deb install without winebox
+this is testing version of wine on armhf device\
+and for arm64 device (wine-arm64) comming soon
+
+
+copy and paste:
+```
+echo "deb [arch=all arch=armhf] https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null
+```
+after add my repository run:
+```
+sudo apt update && sudo apt install wine-i386
+```
 
 ### wine command:
 
