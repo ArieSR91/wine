@@ -18,6 +18,10 @@ winebox configure = configure wine
 ## Deb install without winebox (only armhf)
 copy and paste:
 ```
+sudo apt install wget gnupg apt-transport-https
+```
+Add my repo for install wine, box86 and winebox
+```
 echo "deb https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null; sudo apt update
 ```
 ### armhf architecture
