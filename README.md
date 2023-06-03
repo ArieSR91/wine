@@ -16,13 +16,13 @@ winebox box64 = build box64\
 winebox wine = build wine\
 winebox configure = configure wine
 
-## Deb install without winebox
+## Deb install without winebox (only armhf)
 copy and paste:
 ```
-echo "deb [arch=all,armhf,arm64] https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null; sudo apt update
+echo "deb https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null; sudo apt update
 ```
 ### armhf architecture
-Install box86:
+install box86:
 ```
 sudo apt install box86
 ```
@@ -32,8 +32,10 @@ Install wine-i386:
 sudo apt install wine-i386
 ```
 ### arm64 architecture
-Build box64 using winebox, you can install it using wget command
-
+Build box64 using winebox
+```
+sudo apt install winebox; winebox box64
+```
 
 Install wine-amd64:
 ```
