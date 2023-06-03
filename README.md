@@ -4,6 +4,9 @@ install wine for linux-armhf with box86
 ## Wget install
 install manual:
 ```
+sudo apt install python3 cmake gcc wget build-essential -y
+```
+```
 wget https://raw.githubusercontent.com/ArieSR91/wine/main/winebox; sudo mv winebox /usr/local/bin/; sudo chmod 775 /usr/local/bin/winebox
 ```
 ### winebox command:
@@ -24,7 +27,7 @@ echo "deb [arch=all arch=armhf] https://ariesr91.github.io/user91-repo/kali meta
 ```
 after add my repository run:
 ```
-sudo apt update && sudo apt install wine-i386
+sudo apt update && sudo apt install box86 wine-i386
 ```
 
 ### wine command:
