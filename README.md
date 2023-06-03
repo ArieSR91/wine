@@ -17,23 +17,35 @@ winebox wine = build wine\
 winebox configure = configure wine
 
 ## Deb install without winebox
-this is testing version of wine on armhf device\
-and for arm64 device (wine-arm64) comming soon
-
-
 copy and paste:
 ```
-echo "deb [arch=all arch=armhf] https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null
+echo "deb [arch=all,armhf,arm64] https://ariesr91.github.io/user91-repo/kali metaverse main non-free contribe" | sudo tee /etc/apt/sources.list.d/user91-repo.list; wget -qO - https://raw.githubusercontent.com/ArieSR91/user91-repo/metaverse/user91-repo.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/user91-repo.gpg > /dev/null; sudo apt update
 ```
-after add my repository run:
+### armhf architecture
+Install box86:
 ```
-sudo apt update && sudo apt install box86 wine-i386
+sudo apt install box86
 ```
 
-### wine command:
+Install wine-i386:
+```
+sudo apt install wine-i386
+```
+### arm64 architecture
+Build box64 using winebox, you can install it using wget command
+
+
+Install wine-amd64:
+```
+sudo apt install wine-amd64
+```
+
+## wine command:
 
 winecfg = configure wine\
 wine [program] = run program
+
+
 
 
 ## Termux proot
