@@ -58,7 +58,7 @@ before install wine on proot-distro termux, you must change the architecture to 
 
 Change termux arch:
 ```
-wget https://raw.githubusercontent.com/ArieSR91/wine/main/termux-arch-change; mv termux-arch-change $PREFIX/bin chmod 775 $PREFIX/bin/termux-arch-change
+wget https://raw.githubusercontent.com/ArieSR91/wine/main/termux-arch-change -O $PREFIX/bin/termux-arch-change; chmod 775 $PREFIX/bin/termux-arch-change
 ```
 command:\
 termux-arch-change
